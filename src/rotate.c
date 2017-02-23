@@ -5,15 +5,13 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 23 19:51:13 2017 Arthur Philippe
-** Last update Thu Feb 23 20:48:07 2017 Arthur Philippe
+** Last update Thu Feb 23 21:13:57 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Texture.h>
-#include <unistd.h>
 #include "math.h"
-#include "acp.h"
 #include "raytracer.h"
 
 sfVector3f	rotate_xyz(sfVector3f to_rotate, sfVector3f angles)
