@@ -5,19 +5,22 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:35:31 2017 Arthur Philippe
-** Last update Mon Feb 20 21:43:39 2017 Arthur Philippe
+** Last update Wed Feb 22 18:40:35 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_MESSAGES_H_
 # define RAYTRACER_MESSAGES_H_
 
-# define MSG_FD_ERROR		"File related error: "
-# define MSG_FC_ERROR		"File content error: "
+# define MSG_FD_ERROR		"file related error: "
+# define MSG_FC_ERROR		"file content error: "
 # define MSG_MISSING_FILE	"No such file or directory\n"
 # define MSG_PERMISSION		"Permission denied\n"
 # define MSG_IS_DIR		"Is a directory\n"
 # define MSG_UNKNOWN		"Unexpected error\n"
 # define MSG_TOO_FEW_ARG	"raytracer: too few arguments\n"
+# define MSG_INTERUPTED		"%sraytracer: %serror:%s was not able to\
+ continue\nrun terminated.\n"
+# define MSG_QUIT		"raytracer: user exited.\nrun terminated.\n"
 
 # define RED		"\x1b[31m"
 # define GREEN		"\x1b[32m"

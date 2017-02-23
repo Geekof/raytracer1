@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:35:59 2017 Arthur Philippe
-** Last update Thu Feb 16 08:55:51 2017 Arthur Philippe
+** Last update Thu Feb 23 14:24:54 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -15,7 +15,7 @@
 #include <SFML/Graphics/Texture.h>
 #include "raytracer.h"
 
-int		open_window(t_my_window *w, t_env *env)
+int		open_window(t_my_window *w, t_object *list, t_env *env)
 {
   if (!w && !env)
     return (1);
@@ -25,7 +25,8 @@ int		open_window(t_my_window *w, t_env *env)
   w->buffer = my_framebuffer_create(SC_W, SC_H);
   if (!w->buffer || !w->window)
     return (1);
-  //raytrace_scene(w->buffer);
+  env->screen_size = (sfVector2i) {w->buffer->width, w->buffer->height};
+  raytrace_scene(w->buffer, list, env);
   sfTexture_updateFromPixels(w->tex, w->buffer->pixels, SC_W, SC_H, 0, 0);
   sfSprite_setTexture(w->sprite, w->tex, sfTrue);
   sfRenderWindow_clear(w->window, sfWhite);

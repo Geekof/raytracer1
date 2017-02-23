@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Feb 20 12:30:23 2017 Arthur Philippe
-** Last update Mon Feb 20 21:09:37 2017 Arthur Philippe
+** Last update Thu Feb 23 20:39:14 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -56,6 +56,6 @@ int		check_list_content(t_object *list)
       i += 1;
     }
   acp_print("Object #%d is a %s.\n", i, get_object_type(current->type));
-  acp_print("\nLoaded %d objects total.\n", i);
+  acp_print("\nLoaded %d objects total.\n\n", i);
   return (i);
 }

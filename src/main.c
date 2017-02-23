@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Mon Feb 20 21:44:31 2017 Arthur Philippe
+** Last update Thu Feb 23 15:04:26 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -17,7 +17,7 @@
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
 
-int	window_loop(t_my_window *, t_env *);
+int	window_loop(t_my_window *);
 int	raytracer_launcher();
 
 int	main(int ac, char **av)
@@ -33,8 +33,9 @@ int	main(int ac, char **av)
   else
     status = raytracer_launcher(av[1]);
   if (status)
-    acp_print("%sraytracer: %serror:%s something went wrong\n", BOLD, RED, RST);
-  acp_print("run terminated.\n");
+    acp_print(MSG_INTERUPTED, BOLD, RED, RST);
+  else
+    acp_print(MSG_QUIT);
   return (status);
 }
 
@@ -47,14 +48,15 @@ int	raytracer_launcher(char *file_name)
   list = get_objects_from_file(file_name);
   if (!list)
     return (84);
-  open_window(&w, &env);
-  while (window_loop(&w, &env));
+  env.eye = (sfVector3f) {0, 0, 0};
+  open_window(&w, list, &env);
+  while (window_loop(&w));
   destroy_objects(list);
   window_destroy(&w);
   return (0);
 }
 
-int	window_loop(t_my_window *w, t_env *env)
+int	window_loop(t_my_window *w)
 {
   sfEvent	event;
 

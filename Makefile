@@ -5,7 +5,7 @@
 ## Login   <arthur.philippe@epitech.eu>
 ##
 ## Started on  Sun Feb 12 17:33:18 2017 Arthur Philippe
-## Last update Mon Feb 20 12:31:36 2017 Arthur Philippe
+## Last update Thu Feb 23 20:47:50 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -16,9 +16,14 @@ NAME	=	raytracer1
 
 SRCS	=	src/main.c				\
 		src/open_window.c			\
+		src/my_put_pixel.c			\
 		src/calc_dir_vector.c			\
 		src/data_nuke.c				\
 		src/sphere.c				\
+		src/plane.c				\
+		src/rotate.c				\
+		src/raytrace_scene.c			\
+		src/obj_fctn_shunter.c			\
 		src/utilities.c				\
 		src/data_gathering/load_data.c		\
 		src/data_gathering/objects_creation.c	\

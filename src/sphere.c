@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 15:35:04 2017 Arthur Philippe
-** Last update Mon Feb 20 20:42:40 2017 Arthur Philippe
+** Last update Thu Feb 23 13:51:52 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -17,7 +17,7 @@ sfVector3f	define_quadric_eq_vars(sfVector3f eye_pos,
 				       sfVector3f dir_vector,
 				       float radius)
 {
-  sfVector3f	abc;
+  sfVector3f		abc;
 
   abc.x = powf(dir_vector.x, 2) + powf(dir_vector.y, 2);
   abc.x += powf(dir_vector.z, 2);
@@ -32,8 +32,8 @@ sfVector3f	define_quadric_eq_vars(sfVector3f eye_pos,
 
 float	solve_quadric_eq(float discriminant, float a, float b)
 {
-  float	sol;
-  float	tmp;
+  float		sol;
+  float		tmp;
 
   tmp = 0;
   if (!discriminant)

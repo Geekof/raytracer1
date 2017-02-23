@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Mon Feb 20 20:47:09 2017 Arthur Philippe
+** Last update Thu Feb 23 20:42:48 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -25,6 +25,20 @@
 # define OBJ_PLANE	"PLANE*"
 # define OBJ_CYLINDER	"CYLINDER*"
 # define OBJ_CONE	"CONE*"
+# define XA		angles.x
+# define YA		angles.y
+# define ZA		angles.z
+# define DEFAULT_COLOR	sfBlack
+# define X_TRANSLATE_X	(to_rotate.x)
+# define Y_TRANSLATE_X	((to_rotate.y * cosf(XA)) + (to_rotate.y * -sinf(XA)))
+# define Z_TRANSLATE_X	((to_rotate.y * sinf(XA)) + (to_rotate.z * cosf(XA)))
+# define X_TRANSLATE_Y	((to_rotate.x * cosf(YA)) + (to_rotate.z * sinf(YA)))
+# define Y_TRANSLATE_Y	((to_rotate.y))
+# define Z_TRANSLATE_Y	((to_rotate.x * -sinf(YA)) + (to_rotate.z * cosf(YA)))
+# define X_TRANSLATE_Z	((to_rotate.x * cosf(ZA)) + (to_rotate.y * -sinf(ZA)))
+# define Y_TRANSLATE_Z	((to_rotate.x * sinf(ZA)) + (to_rotate.y * cosf(ZA)))
+# define Z_TRANSLATE_Z	(to_rotate.z)
+
 
 typedef struct		s_my_framebuffer
 {
@@ -53,18 +67,20 @@ typedef struct		s_object
 typedef struct		s_env
 {
   sfVector3f		eye;
+  sfVector3f		curr_dir_vector;
+  sfVector2i		screen_size;
 }			t_env;
 /*
 ** Mandatory
 */
 void		my_put_pixel(t_my_framebuffer *, int, int, sfColor);
-sfVector3f	calc_dir_vector(sfVector2i, sfVector2i);
+sfVector3f	calc_dir_vector(float, sfVector2i, sfVector2i);
 float		intersect_sphere(sfVector3f, sfVector3f, float radius);
 float		intersect_plane(sfVector3f, sfVector3f);
 /*
 ** window related implements.
 */
-int			open_window(t_my_window *, t_env *);
+int			open_window(t_my_window *, t_object *, t_env *);
 sfRenderWindow		*create_window(char *, int, int);
 t_my_framebuffer	*my_framebuffer_create(int, int);
 void			wf_window_destroy(t_my_window *);
@@ -72,6 +88,12 @@ void			wf_refresh_window(t_my_window *,
 					  t_env *,
 					  int *);
 void			reset_pixels(t_my_framebuffer *buffer);
+/*
+** Render
+*/
+void	raytrace_scene(t_my_framebuffer *buffer, t_object *list, t_env *env);
+int	raytracer(t_object *list, t_env *env, sfColor *color);
+float	obj_fctn_shunter(t_object *object, t_env *env, sfColor *);
 /*
 ** Math
 */
@@ -81,7 +103,7 @@ sfVector3f	define_quadric_eq_vars(sfVector3f eye_pos,
 				       float radius);
 float		solve_quadric_eq(float discriminant, float a, float b);
 /*
-** Data obliteration - for your destrive needs.
+** Data obliteration - for your destructive needs.
 */
 void	window_destroy(t_my_window *);
 void	destroy_objects(t_object *);
