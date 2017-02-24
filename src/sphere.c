@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 15:35:04 2017 Arthur Philippe
-** Last update Thu Feb 23 13:51:52 2017 Arthur Philippe
+** Last update Fri Feb 24 15:26:57 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -13,9 +13,9 @@
 #include <SFML/Graphics/Texture.h>
 #include <math.h>
 
-sfVector3f	define_quadric_eq_vars(sfVector3f eye_pos,
-				       sfVector3f dir_vector,
-				       float radius)
+static sfVector3f	define_quadric_eq_vars(sfVector3f eye_pos,
+					       sfVector3f dir_vector,
+					       float radius)
 {
   sfVector3f		abc;
 

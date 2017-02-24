@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Thu Feb 23 20:42:48 2017 Arthur Philippe
+** Last update Fri Feb 24 10:54:52 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -30,7 +30,7 @@
 # define ZA		angles.z
 # define DEFAULT_COLOR	sfBlack
 # define X_TRANSLATE_X	(to_rotate.x)
-# define Y_TRANSLATE_X	((to_rotate.y * cosf(XA)) + (to_rotate.y * -sinf(XA)))
+# define Y_TRANSLATE_X	((to_rotate.y * cosf(XA)) + (to_rotate.z * -sinf(XA)))
 # define Z_TRANSLATE_X	((to_rotate.y * sinf(XA)) + (to_rotate.z * cosf(XA)))
 # define X_TRANSLATE_Y	((to_rotate.x * cosf(YA)) + (to_rotate.z * sinf(YA)))
 # define Y_TRANSLATE_Y	((to_rotate.y))
@@ -61,6 +61,7 @@ typedef struct		s_object
   float			size_a;
   float			size_b;
   sfVector3f		pos;
+  sfVector3f		rot;
   struct s_object	*next;
 }			t_object;
 
