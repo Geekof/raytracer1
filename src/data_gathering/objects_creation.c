@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Feb 18 11:24:50 2017 Arthur Philippe
-** Last update Fri Feb 24 09:42:14 2017 Arthur Philippe
+** Last update Fri Feb 24 20:41:42 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -77,6 +77,7 @@ t_object	*create_object(char *buffer, int *idx)
   while (buffer[*idx])
     {
       add_size(buffer, idx, new_object);
+      add_rotation(buffer, idx, new_object);
       if (buffer[*idx] == 'X')
   	new_object->pos.x = my_getnbr(&buffer[*idx + 2]);
       else if (buffer[*idx] == 'Y')

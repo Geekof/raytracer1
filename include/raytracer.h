@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Fri Feb 24 10:54:52 2017 Arthur Philippe
+** Last update Fri Feb 24 20:51:39 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -25,6 +25,7 @@
 # define OBJ_PLANE	"PLANE*"
 # define OBJ_CYLINDER	"CYLINDER*"
 # define OBJ_CONE	"CONE*"
+# define PI		3.14159265359
 # define XA		angles.x
 # define YA		angles.y
 # define ZA		angles.z
@@ -78,6 +79,12 @@ void		my_put_pixel(t_my_framebuffer *, int, int, sfColor);
 sfVector3f	calc_dir_vector(float, sfVector2i, sfVector2i);
 float		intersect_sphere(sfVector3f, sfVector3f, float radius);
 float		intersect_plane(sfVector3f, sfVector3f);
+float		intersect_cylinder(sfVector3f eye_pos,
+				   sfVector3f dir_vector,
+				   float radius);
+sfVector3f	rotate_xyz(sfVector3f to_rotate, sfVector3f angles);
+sfVector3f	rotate_zyx(sfVector3f to_rotate, sfVector3f angles);
+
 /*
 ** window related implements.
 */
