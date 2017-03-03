@@ -5,7 +5,7 @@
 ## Login   <arthur.philippe@epitech.eu>
 ##
 ## Started on  Sun Feb 12 17:33:18 2017 Arthur Philippe
-## Last update Fri Mar  3 13:49:43 2017 Arthur Philippe
+## Last update Fri Mar  3 17:22:28 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -21,6 +21,7 @@ SRCS	=	src/main.c				\
 		src/data_nuke.c				\
 		src/sphere.c				\
 		src/plane.c				\
+		src/cone.c				\
 		src/rotate.c				\
 		src/cylinder.c				\
 		src/translate.c				\
