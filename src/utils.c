@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Fri Mar  3 13:45:30 2017 Arthur Philippe
-** Last update Fri Mar  3 13:48:40 2017 Arthur Philippe
+** Last update Fri Mar  3 15:24:13 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -23,7 +23,8 @@ float	solve_quadric_eq(float discriminant, float a, float b)
     {
       sol = -b;
       sol /= 2 * a;
-      return (sol);
+      if (sol > 0)
+	return (sol);
     }
   else if (discriminant > 0)
     {
@@ -33,7 +34,8 @@ float	solve_quadric_eq(float discriminant, float a, float b)
       tmp /= 2 * a;
       if (tmp > 0 && tmp < sol)
 	return (tmp);
-      return (sol);
+      if (sol > 0)
+	return (sol);
     }
   return (-1);
 }
