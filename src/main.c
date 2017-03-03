@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Fri Feb 24 17:09:32 2017 Arthur Philippe
+** Last update Fri Feb 24 21:18:29 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -60,7 +60,7 @@ int	window_loop(t_my_window *w)
 {
   sfEvent	event;
 
-  while (sfRenderWindow_pollEvent(w->window, &event))
+  while (sfRenderWindow_waitEvent(w->window, &event))
     {
       if (event.type == sfEvtClosed
 	  || (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape))

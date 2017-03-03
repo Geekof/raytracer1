@@ -5,7 +5,7 @@
 ## Login   <arthur.philippe@epitech.eu>
 ##
 ## Started on  Sun Feb 12 17:33:18 2017 Arthur Philippe
-## Last update Fri Feb 24 15:51:41 2017 Arthur Philippe
+## Last update Fri Mar  3 13:49:43 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -27,6 +27,7 @@ SRCS	=	src/main.c				\
 		src/raytrace_scene.c			\
 		src/obj_fctn_shunter.c			\
 		src/utilities.c				\
+		src/utils.c				\
 		src/data_gathering/load_data.c		\
 		src/data_gathering/objects_creation.c	\
 		src/data_gathering/match.c		\
