@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb  9 13:20:41 2017 Arthur Philippe
-** Last update Sat Feb 11 18:26:01 2017 Arthur Philippe
+** Last update Tue Mar  7 10:46:08 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -24,4 +24,14 @@ float	intersect_plane(sfVector3f eye_pos, sfVector3f dir_vector)
     return (k);
   else
     return (-1);
+}
+
+sfVector3f	get_normal_plane(int upward)
+{
+  sfVector3f	normal;
+
+  normal.x = 0;
+  normal.y = 0;
+  normal.z = (upward) ? 1 : -1;
+  return (normal);
 }

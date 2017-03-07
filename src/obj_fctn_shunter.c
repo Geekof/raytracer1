@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 23 12:56:37 2017 Arthur Philippe
-** Last update Fri Mar  3 17:58:56 2017 Arthur Philippe
+** Last update Tue Mar  7 10:52:44 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -35,12 +35,15 @@ inline static float	obj_fctn_plane(t_object *object,
 				       sfColor *color)
 {
   sfVector3f	new_eye;
+  sfVector3f	new_dir_v;
 
   *color = sfBlue;
   new_eye.x = env->eye.x;
   new_eye.y = env->eye.y;
   new_eye.z = env->eye.z - object->pos.z;
-  return (intersect_plane(new_eye, env->curr_dir_vector));
+  new_eye = rotate_xyz(new_eye, object->rot);
+  new_dir_v = rotate_xyz(env->curr_dir_vector, object->rot);
+  return (intersect_plane(new_eye, new_dir_v));
 }
 
 inline static float	obj_fctn_cylinder(t_object *object,

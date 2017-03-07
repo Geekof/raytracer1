@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 15:35:04 2017 Arthur Philippe
-** Last update Fri Mar  3 13:48:05 2017 Arthur Philippe
+** Last update Tue Mar  7 10:40:49 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -43,4 +43,9 @@ float		intersect_sphere(sfVector3f eye_pos, sfVector3f dir_vector,
   discriminant = powf(abc.y, 2) - (4 * abc.x * abc.z);
   sol = solve_quadric_eq(discriminant, abc.x, abc.y);
   return (sol);
+}
+
+sfVector3f	get_normal_sphere(sfVector3f intersection_point)
+{
+  return (intersection_point);
 }
