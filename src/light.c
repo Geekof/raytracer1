@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Mar  7 12:15:12 2017 Arthur Philippe
-** Last update Tue Mar  7 14:39:53 2017 Arthur Philippe
+** Last update Tue Mar  7 15:21:17 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -22,7 +22,7 @@ float	get_light_coef(sfVector3f light_vector, sfVector3f normal_vector)
   cos_a += normal_vector.y * light_vector.y;
   cos_a += normal_vector.z * light_vector.z;
   if (cos_a < 0)
-    return (-1);
+    return (0);
   else
     return (cos_a);
 }

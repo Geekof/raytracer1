@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Fri Mar  3 15:52:08 2017 Arthur Philippe
-** Last update Fri Mar  3 17:21:57 2017 Arthur Philippe
+** Last update Tue Mar  7 15:38:37 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -41,4 +41,10 @@ float		intersect_cone(sfVector3f eye_pos, sfVector3f dir_vector,
   discriminant = powf(abc.y, 2) - (4 * abc.x * abc.z);
   sol = solve_quadric_eq(discriminant, abc.x, abc.y);
   return (sol);
+}
+
+sfVector3f	get_normal_cone(sfVector3f intersection_point, float semiangle)
+{
+  intersection_point.z *= semiangle;
+  return (intersection_point);
 }

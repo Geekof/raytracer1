@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Fri Feb 24 15:24:47 2017 Arthur Philippe
-** Last update Fri Feb 24 21:11:02 2017 Arthur Philippe
+** Last update Tue Mar  7 15:31:19 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -41,4 +41,10 @@ float	intersect_cylinder(sfVector3f eye_pos,
   discriminant = powf(abc.y, 2) - (4 * abc.x * abc.z);
   sol = solve_quadric_eq(discriminant, abc.x, abc.y);
   return (sol);
+}
+
+sfVector3f	get_normal_cylinder(sfVector3f intersection_point)
+{
+  intersection_point.z = 0;
+  return (intersection_point);
 }
