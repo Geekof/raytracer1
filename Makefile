@@ -5,7 +5,7 @@
 ## Login   <arthur.philippe@epitech.eu>
 ##
 ## Started on  Sun Feb 12 17:33:18 2017 Arthur Philippe
-## Last update Fri Mar  3 17:22:28 2017 Arthur Philippe
+## Last update Tue Mar  7 14:18:35 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -25,6 +25,7 @@ SRCS	=	src/main.c				\
 		src/rotate.c				\
 		src/cylinder.c				\
 		src/translate.c				\
+		src/light.c				\
 		src/raytrace_scene.c			\
 		src/obj_fctn_shunter.c			\
 		src/utilities.c				\

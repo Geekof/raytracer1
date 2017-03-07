@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Fri Mar  3 17:43:46 2017 Arthur Philippe
+** Last update Tue Mar  7 12:12:22 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -39,7 +39,6 @@
 # define X_TRANSLATE_Z	((to_rotate.x * cosf(ZA)) + (to_rotate.y * -sinf(ZA)))
 # define Y_TRANSLATE_Z	((to_rotate.x * sinf(ZA)) + (to_rotate.y * cosf(ZA)))
 # define Z_TRANSLATE_Z	(to_rotate.z)
-
 
 typedef struct		s_my_framebuffer
 {

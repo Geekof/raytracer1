@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 23 12:56:37 2017 Arthur Philippe
-** Last update Tue Mar  7 10:52:44 2017 Arthur Philippe
+** Last update Tue Mar  7 12:18:53 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -80,7 +80,7 @@ inline static float	obj_fctn_cone(t_object *object,
 
 float	obj_fctn_shunter(t_object *object, t_env *env, sfColor *color)
 {
-  float		(*obj_intersect[5])(t_object *, t_env *, sfColor *);
+  static float		(*obj_intersect[5])(t_object *, t_env *, sfColor *);
 
   obj_intersect[1] = obj_fctn_sphere;
   obj_intersect[2] = obj_fctn_plane;

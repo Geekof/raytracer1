@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:35:31 2017 Arthur Philippe
-** Last update Wed Feb 22 18:40:35 2017 Arthur Philippe
+** Last update Tue Mar  7 12:14:46 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_MESSAGES_H_
@@ -22,14 +22,14 @@
  continue\nrun terminated.\n"
 # define MSG_QUIT		"raytracer: user exited.\nrun terminated.\n"
 
-# define RED		"\x1b[31m"
-# define GREEN		"\x1b[32m"
-# define YELLOW		"\x1b[33m"
-# define BLUE		"\x1b[34m"
-# define MAGENTA	"\x1b[35m"
-# define CYAN		"\x1b[36m"
-# define RST		"\x1b[0m"
-# define BOLD		"\033[1m"
+# define RED			"\x1b[31m"
+# define GREEN			"\x1b[32m"
+# define YELLOW			"\x1b[33m"
+# define BLUE			"\x1b[34m"
+# define MAGENTA		"\x1b[35m"
+# define CYAN			"\x1b[36m"
+# define RST			"\x1b[0m"
+# define BOLD			"\033[1m"
 
 # define TYPE_SPHERE		"sphere"
 # define TYPE_PLANE		"plane"
