@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 23 19:51:13 2017 Arthur Philippe
-** Last update Fri Feb 24 21:00:28 2017 Arthur Philippe
+** Last update Wed Mar  8 20:34:19 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -17,8 +17,8 @@
 static inline sfVector3f	rotate_angle_converter(sfVector3f angles)
 {
   angles.x = angles.x * (PI / 180);
-  angles.y = angles.x * (PI / 180);
-  angles.z = angles.x * (PI / 180);
+  angles.y = angles.y * (PI / 180);
+  angles.z = angles.z * (PI / 180);
   return (angles);
 }
 
