@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 22 18:45:40 2017 Arthur Philippe
-** Last update Fri Mar  3 16:49:15 2017 Arthur Philippe
+** Last update Thu Mar  9 13:05:20 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -17,28 +17,45 @@
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
 
-int		raytrace(t_object *list, t_env *env, sfColor *color)
+inline static sfColor	get_def_color(t_object *obj)
 {
-  float		last_k;
-  float		k;
-  sfColor	new_color;
+  if (obj->type == 1)
+    return (sfRed);
+  else if (obj->type == 2)
+    return (sfBlue);
+  else if (obj->type == 3)
+    return (sfGreen);
+  else if (obj->type == 4)
+    return (sfYellow);
+  else
+    return (sfBlack);
+}
+
+inline static int	raytrace(t_object *list, t_env *env, sfColor *color)
+{
+  float			last_k;
+  float			k;
+  sfColor		new_color;
 
   last_k = k = -1;
   *color = new_color = DEFAULT_COLOR;
   while (list)
     {
-      k = obj_fctn_shunter(list, env, &new_color);
+      k = obj_fctn_shunter(list, env);
       if (k >= 0 && (last_k == -1 || last_k > k))
 	{
-	  *color = new_color;
+	  *color = get_def_color(list);
 	  last_k = k;
+	//   color_modifier(env, env->last_intersect, color);
 	}
       list = list->next;
     }
   return ((k >= 0) ? k : 0);
 }
 
-void	raytrace_scene(t_my_framebuffer *buffer, t_object *list, t_env *env)
+void		raytrace_scene(t_my_framebuffer *buffer,
+			       t_object *list,
+			       t_env *env)
 {
   sfVector2i	sc_pos;
   sfColor	hit_color;

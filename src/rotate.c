@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 23 19:51:13 2017 Arthur Philippe
-** Last update Wed Mar  8 20:34:19 2017 Arthur Philippe
+** Last update Thu Mar  9 13:03:33 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -24,30 +24,40 @@ static inline sfVector3f	rotate_angle_converter(sfVector3f angles)
 
 sfVector3f	rotate_xyz(sfVector3f to_rotate, sfVector3f angles)
 {
+  sfVector3f	tmp;
+
   angles = rotate_angle_converter(angles);
-  to_rotate.x = X_TRANSLATE_X;
-  to_rotate.y = Y_TRANSLATE_X;
-  to_rotate.z = Z_TRANSLATE_X;
-  to_rotate.x = X_TRANSLATE_Y;
-  to_rotate.y = Y_TRANSLATE_Y;
-  to_rotate.z = Z_TRANSLATE_Y;
-  to_rotate.x = X_TRANSLATE_Z;
-  to_rotate.y = Y_TRANSLATE_Z;
-  to_rotate.z = Z_TRANSLATE_Z;
+  tmp.x = X_TRANSLATE_X;
+  tmp.y = Y_TRANSLATE_X;
+  tmp.z = Z_TRANSLATE_X;
+  to_rotate = tmp;
+  tmp.x = X_TRANSLATE_Y;
+  tmp.y = Y_TRANSLATE_Y;
+  tmp.z = Z_TRANSLATE_Y;
+  to_rotate = tmp;
+  tmp.x = X_TRANSLATE_Z;
+  tmp.y = Y_TRANSLATE_Z;
+  tmp.z = Z_TRANSLATE_Z;
+  to_rotate = tmp;
   return (to_rotate);
 }
 
 sfVector3f	rotate_zyx(sfVector3f to_rotate, sfVector3f angles)
 {
+  sfVector3f	tmp;
+
   angles = rotate_angle_converter(angles);
-  to_rotate.x = X_TRANSLATE_Z;
-  to_rotate.y = Y_TRANSLATE_Z;
-  to_rotate.z = Z_TRANSLATE_Z;
-  to_rotate.x = X_TRANSLATE_Y;
-  to_rotate.y = Y_TRANSLATE_Y;
-  to_rotate.z = Z_TRANSLATE_Y;
-  to_rotate.x = X_TRANSLATE_X;
-  to_rotate.y = Y_TRANSLATE_X;
-  to_rotate.z = Z_TRANSLATE_X;
+  tmp.x = X_TRANSLATE_Z;
+  tmp.y = Y_TRANSLATE_Z;
+  tmp.z = Z_TRANSLATE_Z;
+  to_rotate = tmp;
+  tmp.x = X_TRANSLATE_Y;
+  tmp.y = Y_TRANSLATE_Y;
+  tmp.z = Z_TRANSLATE_Y;
+  to_rotate = tmp;
+  tmp.x = X_TRANSLATE_X;
+  tmp.y = Y_TRANSLATE_X;
+  tmp.z = Z_TRANSLATE_X;
+  to_rotate = tmp;
   return (to_rotate);
 }

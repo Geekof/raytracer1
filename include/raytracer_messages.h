@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:35:31 2017 Arthur Philippe
-** Last update Tue Mar  7 12:14:46 2017 Arthur Philippe
+** Last update Thu Mar  9 10:34:45 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_MESSAGES_H_
@@ -20,7 +20,10 @@
 # define MSG_TOO_FEW_ARG	"raytracer: too few arguments\n"
 # define MSG_INTERUPTED		"%sraytracer: %serror:%s was not able to\
  continue\nrun terminated.\n"
-# define MSG_QUIT		"raytracer: user exited.\nrun terminated.\n"
+# define MSG_PLAUSIBLE_WARNING	"%s%s: %swarning:%s configuration file\
+ contains an inconsistency.\n"
+# define MSG_QUIT		"raytracer: user exited. (ESC)\
+\nrun terminated.\n"
 
 # define RED			"\x1b[31m"
 # define GREEN			"\x1b[32m"
@@ -35,6 +38,6 @@
 # define TYPE_PLANE		"plane"
 # define TYPE_CYLINDER		"cylinder"
 # define TYPE_CONE		"cone"
-# define TYPE_UNK		"potato"
+# define TYPE_UNK		"beautiful princess"
 
 #endif /* !RAYTRACER_MESSAGES_H_ */

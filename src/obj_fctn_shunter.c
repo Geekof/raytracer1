@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 23 12:56:37 2017 Arthur Philippe
-** Last update Wed Mar  8 20:37:30 2017 Arthur Philippe
+** Last update Thu Mar  9 13:01:59 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -17,77 +17,90 @@
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
 
+sfVector3f	get_intersection(sfVector3f eye_pos,
+				 sfVector3f dir_vector,
+				 float k);
+
 inline static float	obj_fctn_sphere(t_object *object,
-					t_env *env,
-					sfColor *color)
+					t_env *env)
 {
   sfVector3f	new_eye;
+  float		k;
 
-  *color = sfRed;
   new_eye.x = env->eye.x - object->pos.x;
   new_eye.y = env->eye.y - object->pos.y;
   new_eye.z = env->eye.z - object->pos.z;
-  return (intersect_sphere(new_eye, env->curr_dir_vector, object->size_a));
+  k = intersect_sphere(new_eye, env->curr_dir_vector, object->size_a);
+  if (k != -1)
+    env->last_intersect = get_intersection(new_eye, env->curr_dir_vector, k);
+  return (k);
 }
 
 inline static float	obj_fctn_plane(t_object *object,
-				       t_env *env,
-				       sfColor *color)
+				       t_env *env)
 {
   sfVector3f	new_eye;
   sfVector3f	new_dir_v;
+  float		k;
 
-  *color = sfBlue;
   new_eye.x = env->eye.x;
   new_eye.y = env->eye.y;
   new_eye.z = env->eye.z - object->pos.z;
-  new_eye = rotate_xyz(new_eye, object->rot);
-  new_dir_v = rotate_xyz(env->curr_dir_vector, object->rot);
-  return (intersect_plane(new_eye, new_dir_v));
+  new_eye = rotate_zyx(new_eye, object->rot);
+  new_dir_v = rotate_zyx(env->curr_dir_vector, object->rot);
+  k = intersect_plane(new_eye, new_dir_v);
+  if (k != -1)
+    env->last_intersect = get_intersection(new_eye, env->curr_dir_vector, k);
+  return (k);
 }
 
 inline static float	obj_fctn_cylinder(t_object *object,
-					  t_env *env,
-					  sfColor *color)
+					  t_env *env)
 {
   sfVector3f	new_eye;
   sfVector3f	new_dir_v;
+  float		k;
 
-  *color = sfGreen;
   new_eye.x = env->eye.x - object->pos.x;
   new_eye.y = env->eye.y - object->pos.y;
   new_eye.z = env->eye.z - object->pos.z;
-  new_eye = rotate_xyz(new_eye, object->rot);
-  new_dir_v = rotate_xyz(env->curr_dir_vector, object->rot);
-  return (intersect_cylinder(new_eye, new_dir_v, object->size_a));
+  new_eye = rotate_zyx(new_eye, object->rot);
+  new_dir_v = rotate_zyx(env->curr_dir_vector, object->rot);
+  k = intersect_cylinder(new_eye, new_dir_v, object->size_a);
+  if (k != -1)
+    env->last_intersect = get_intersection(new_eye, env->curr_dir_vector, k);
+  return (k);
 }
 
 inline static float	obj_fctn_cone(t_object *object,
-				      t_env *env,
-				      sfColor *color)
+				      t_env *env)
 {
   sfVector3f	new_eye;
   sfVector3f	new_dir_v;
+  float		k;
 
-  *color = sfYellow;
   new_eye.x = env->eye.x - object->pos.x;
   new_eye.y = env->eye.y - object->pos.y;
   new_eye.z = env->eye.z - object->pos.z;
-  new_eye = rotate_xyz(new_eye, object->rot);
-  new_dir_v = rotate_xyz(env->curr_dir_vector, object->rot);
-  return (intersect_cone(new_eye, new_dir_v, object->size_a));
+  new_eye = rotate_zyx(new_eye, object->rot);
+  new_dir_v = rotate_zyx(env->curr_dir_vector, object->rot);
+  k = intersect_cone(new_eye, new_dir_v, object->size_a);
+  if (k != -1)
+    env->last_intersect = get_intersection(new_eye, env->curr_dir_vector, k);
+  return (k);
+
 }
 
-float	obj_fctn_shunter(t_object *object, t_env *env, sfColor *color)
+float	obj_fctn_shunter(t_object *object, t_env *env)
 {
-  static float		(*obj_intersect[5])(t_object *, t_env *, sfColor *);
+  static float		(*obj_intersect[5])(t_object *, t_env *);
 
   obj_intersect[1] = obj_fctn_sphere;
   obj_intersect[2] = obj_fctn_plane;
   obj_intersect[3] = obj_fctn_cylinder;
   obj_intersect[4] = obj_fctn_cone;
   if (object->type > 0 && object->type <= 4)
-    return (obj_intersect[object->type](object, env, color));
+    return (obj_intersect[object->type](object, env));
   else
     return (-1);
 }

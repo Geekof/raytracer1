@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Tue Mar  7 12:12:22 2017 Arthur Philippe
+** Last update Thu Mar  9 12:18:19 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -67,8 +67,11 @@ typedef struct		s_object
 
 typedef struct		s_env
 {
+  t_object		*list;
   sfVector3f		eye;
+  sfVector3f		light;
   sfVector3f		curr_dir_vector;
+  sfVector3f		last_intersect;
   sfVector2i		screen_size;
 }			t_env;
 /*
@@ -101,9 +104,14 @@ void			reset_pixels(t_my_framebuffer *buffer);
 /*
 ** Render
 */
-void	raytrace_scene(t_my_framebuffer *buffer, t_object *list, t_env *env);
-int	raytracer(t_object *list, t_env *env, sfColor *color);
-float	obj_fctn_shunter(t_object *object, t_env *env, sfColor *);
+void			raytrace_scene(t_my_framebuffer *buffer,
+				       t_object *list,
+				       t_env *env);
+float			obj_fctn_shunter(t_object *object,
+					 t_env *env);
+void	color_modifier(t_env *env,
+		       sfVector3f intersect_pt,
+		       sfColor *color);
 /*
 ** Math
 */

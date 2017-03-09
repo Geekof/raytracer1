@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 14:38:11 2017 Arthur Philippe
-** Last update Mon Feb 20 21:10:04 2017 Arthur Philippe
+** Last update Thu Mar  9 10:32:42 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -75,7 +75,7 @@ t_object	*get_objects_from_file(char *file_name)
       if (detect_start_keyword(buffer, &i))
 	objects = add_to_object_list(create_object(buffer, &i), objects);
     }
-  check_list_content(objects);
+  check_list_content(objects, file_name);
   free(buffer);
   return (objects);
 }
