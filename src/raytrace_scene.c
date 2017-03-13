@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 22 18:45:40 2017 Arthur Philippe
-** Last update Thu Mar  9 13:05:20 2017 Arthur Philippe
+** Last update Mon Mar 13 10:40:37 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -31,6 +31,12 @@ inline static sfColor	get_def_color(t_object *obj)
     return (sfBlack);
 }
 
+inline static void	move_intersect(t_object *obj, t_env *env)
+{
+  env->last_intersect = translate_inv(env->last_intersect, obj->pos);
+  env->last_intersect = rotate_zyx(env->last_intersect, obj->rot);
+}
+
 inline static int	raytrace(t_object *list, t_env *env, sfColor *color)
 {
   float			last_k;
@@ -46,7 +52,8 @@ inline static int	raytrace(t_object *list, t_env *env, sfColor *color)
 	{
 	  *color = get_def_color(list);
 	  last_k = k;
-	//   color_modifier(env, env->last_intersect, color);
+	//   move_intersect(list, env);
+	  color_modifier(env, env->last_intersect, color);
 	}
       list = list->next;
     }

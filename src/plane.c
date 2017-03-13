@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb  9 13:20:41 2017 Arthur Philippe
-** Last update Tue Mar  7 15:39:29 2017 Arthur Philippe
+** Last update Thu Mar  9 16:18:15 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -32,6 +32,6 @@ sfVector3f	get_normal_plane(int upward)
 
   normal.x = 0;
   normal.y = 0;
-  normal.z = (upward) ? 100 : -100;
+  normal.z = (upward) ? 1 : -1;
   return (normal);
 }

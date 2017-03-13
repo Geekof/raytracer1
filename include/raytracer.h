@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Thu Mar  9 12:18:19 2017 Arthur Philippe
+** Last update Mon Mar 13 10:31:22 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -72,6 +72,8 @@ typedef struct		s_env
   sfVector3f		light;
   sfVector3f		curr_dir_vector;
   sfVector3f		last_intersect;
+  sfVector3f		last_normal;
+  int			last_obj;
   sfVector2i		screen_size;
 }			t_env;
 /*
@@ -89,6 +91,14 @@ float		intersect_cone(sfVector3f eye_pos,
 			       float radius);
 sfVector3f	rotate_xyz(sfVector3f to_rotate, sfVector3f angles);
 sfVector3f	rotate_zyx(sfVector3f to_rotate, sfVector3f angles);
+sfVector3f	get_normal_sphere(sfVector3f intersection_point);
+sfVector3f	get_normal_cylinder(sfVector3f intersection_point);
+sfVector3f	get_normal_cone(sfVector3f intersection_point, float semiangle);
+sfVector3f	get_normal_plane(int);
+float		get_light_coef(sfVector3f light_vector,
+			       sfVector3f normal_vector);
+sfVector3f	translate_inv(sfVector3f to_translate,
+			      sfVector3f translations);
 
 /*
 ** window related implements.
