@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 22 18:45:40 2017 Arthur Philippe
-** Last update Mon Mar 13 10:40:37 2017 Arthur Philippe
+** Last update Mon Mar 13 13:34:44 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -52,8 +52,7 @@ inline static int	raytrace(t_object *list, t_env *env, sfColor *color)
 	{
 	  *color = get_def_color(list);
 	  last_k = k;
-	//   move_intersect(list, env);
-	  color_modifier(env, env->last_intersect, color);
+	  color_modifier(env, list, env->last_intersect, color);
 	}
       list = list->next;
     }

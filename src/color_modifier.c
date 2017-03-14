@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Mar  8 20:17:05 2017 Arthur Philippe
-** Last update Mon Mar 13 12:38:40 2017 Arthur Philippe
+** Last update Tue Mar 14 09:40:28 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -43,11 +43,32 @@ static inline int	is_obj_lighten(t_object *list, t_env *env)
   while (list)
     {
       k = obj_fctn_shunter(list, env);
-      if (k > 0.001 && k < 1)
+      if (k > 0.0001 && k < 1)
 	return (0);
       list = list->next;
     }
   return (1);
+}
+
+void	set_light_and_normal(sfVector3f *light,
+			     sfVector3f *normal,
+			     t_env *env,
+			     t_object *obj)
+{
+  sfVector3f	intersect_pt;
+
+  intersect_pt = translate_inv(env->last_intersect, obj->pos);
+  *light = rotate_zyx(*light, obj->rot);
+  intersect_pt = rotate_zyx(intersect_pt, obj->rot);
+  if (obj->type == 1)
+    *normal = get_normal_sphere(intersect_pt);
+  else if (obj->type == 2)
+    *normal = get_normal_plane(1);
+  else if (obj->type == 3)
+    *normal = get_normal_cylinder(intersect_pt);
+  else if (obj->type == 4)
+    *normal = get_normal_cone(intersect_pt, obj->size_a);
+  *normal = rotate_zyx(*normal, obj->rot);
 }
 
 void		color_modifier(t_env *env,
@@ -62,24 +83,23 @@ void		color_modifier(t_env *env,
   int		lighten;
   float		coef;
 
+  light_vector.x = env->light.x - env->last_intersect.x;
+  light_vector.y = env->light.y - env->last_intersect.y;
+  light_vector.z = env->light.z - env->last_intersect.z;
   dir_v_save = env->curr_dir_vector;
   eye_save = env->eye;
-  env->eye = intersect_pt;
-  normal = env->last_normal;
-  light_vector.x = env->light.x - intersect_pt.x;
-  light_vector.y = env->light.y - intersect_pt.y;
-  light_vector.z = env->light.z - intersect_pt.z;
   env->curr_dir_vector = light_vector;
-  lighten = is_obj_lighten(env->list, env);
-  env->curr_dir_vector = dir_v_save;
-  env->eye = eye_save;
-  // printf("type %d ", env->last_obj);
-  if (lighten)
+  env->eye = intersect_pt;
+  // lighten = is_obj_lighten(env->list, env);
+  set_light_and_normal(&light_vector, &normal, env, obj);
+  if (lighten || 1)
     {
-      coef = get_light_coef(rotate_zyx(light_vector, obj->rot), normal);
-      coef += (coef < 1) ? 0.1 : 0;
+      coef = get_light_coef(light_vector, normal);
+      coef += (coef < 0.9) ? 0.1 : (coef > 0.9 && coef < 1) ? 1 - coef : 0;
       color->a *= coef;
     }
   else if (!lighten)
     color->a *= 0.1;
+  env->curr_dir_vector = dir_v_save;
+  env->eye = eye_save;
 }

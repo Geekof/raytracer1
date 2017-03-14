@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Mon Mar 13 10:31:22 2017 Arthur Philippe
+** Last update Mon Mar 13 13:34:23 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -120,6 +120,7 @@ void			raytrace_scene(t_my_framebuffer *buffer,
 float			obj_fctn_shunter(t_object *object,
 					 t_env *env);
 void	color_modifier(t_env *env,
+		       t_object *obj,
 		       sfVector3f intersect_pt,
 		       sfColor *color);
 /*
