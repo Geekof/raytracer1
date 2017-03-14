@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Feb 20 12:30:23 2017 Arthur Philippe
-** Last update Thu Mar  9 10:38:07 2017 Arthur Philippe
+** Last update Tue Mar 14 17:45:37 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -41,6 +41,21 @@ t_object	*create_list_node()
   return (obj);
 }
 
+void		find_light(t_object *list, t_env* env)
+{
+  while (list)
+    {
+      if (list->type == 5)
+	{
+	  env->light = list->pos;
+	  env->light.y;
+	  return ;
+	}
+      list = list->next;
+    }
+  env->light = DEFAUT_LIGHT;
+}
+
 int		check_list_content(t_object *list, char *file_name)
 {
   int		i;
@@ -48,6 +63,7 @@ int		check_list_content(t_object *list, char *file_name)
   t_object	*current;
 
   i = 1;
+  err = 0;
   if (!list)
     return (-1);
   current = list;

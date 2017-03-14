@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Tue Mar 14 16:56:00 2017 Arthur Philippe
+** Last update Tue Mar 14 17:46:20 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -19,6 +19,7 @@
 
 int	window_loop(t_my_window *);
 int	raytracer_launcher();
+void	find_light(t_object *list, t_env* env);
 
 int	main(int ac, char **av)
 {
@@ -49,9 +50,9 @@ int	raytracer_launcher(char *file_name)
   if (!list)
     return (84);
   env.eye = (sfVector3f) {-400, 0, 0};
-  env.light = (sfVector3f) {-300, 600, 200};
+  find_light(list, &env);
   env.list = list;
-  open_window(&w, list, &env);
+  open_window(&w, list, &env, file_name);
   while (window_loop(&w));
   destroy_objects(list);
   window_destroy(&w);

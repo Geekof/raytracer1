@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:35:59 2017 Arthur Philippe
-** Last update Fri Mar 10 16:55:25 2017 Arthur Philippe
+** Last update Tue Mar 14 17:50:52 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -15,11 +15,14 @@
 #include <SFML/Graphics/Texture.h>
 #include "raytracer.h"
 
-int		open_window(t_my_window *w, t_object *list, t_env *env)
+int		open_window(t_my_window *w,
+			    t_object *list,
+			    t_env *env,
+			    char *file_name)
 {
   if (!w && !env)
     return (1);
-  w->window = create_window(WINDOW_NAME, SC_W, SC_H);
+  w->window = create_window(file_name, SC_W, SC_H);
   w->sprite = sfSprite_create();
   w->tex = sfTexture_create(SC_W, SC_H);
   w->buffer = my_framebuffer_create(SC_W, SC_H);

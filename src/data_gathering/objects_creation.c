@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Feb 18 11:24:50 2017 Arthur Philippe
-** Last update Tue Mar  7 16:44:10 2017 Arthur Philippe
+** Last update Tue Mar 14 17:26:05 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -26,6 +26,8 @@ int	resolve_object_type(char *str)
     return (3);
   else if (match(str, OBJ_CONE))
     return (4);
+  else if (match(str, OBJ_LIGHT))
+    return (5);
   return (0);
 }
 
@@ -39,8 +41,9 @@ char	*get_object_type(int type)
     return (TYPE_CYLINDER);
   else if (type == 4)
     return (TYPE_CONE);
-  else
-    return (TYPE_UNK);
+  else if (type == 5)
+    return (TYPE_LIGHT);
+  return (TYPE_UNK);
 }
 
 int	add_size(char *buffer, int *idx, t_object *new_object)

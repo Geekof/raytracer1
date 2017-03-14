@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:35:31 2017 Arthur Philippe
-** Last update Thu Mar  9 10:34:45 2017 Arthur Philippe
+** Last update Tue Mar 14 17:50:16 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_MESSAGES_H_
@@ -38,6 +38,7 @@
 # define TYPE_PLANE		"plane"
 # define TYPE_CYLINDER		"cylinder"
 # define TYPE_CONE		"cone"
-# define TYPE_UNK		"beautiful princess"
+# define TYPE_LIGHT		"light"
+# define TYPE_UNK		"beautiful princess or a rune of hyrule"
 
 #endif /* !RAYTRACER_MESSAGES_H_ */

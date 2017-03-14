@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Tue Mar 14 14:07:52 2017 Arthur Philippe
+** Last update Tue Mar 14 17:51:16 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -25,11 +25,13 @@
 # define OBJ_PLANE	"PLANE*"
 # define OBJ_CYLINDER	"CYLINDER*"
 # define OBJ_CONE	"CONE*"
+# define OBJ_LIGHT	"LIGHT*"
 # define PI		3.14159265359
 # define XA		angles.x
 # define YA		angles.y
 # define ZA		angles.z
 # define DEFAULT_COLOR	sfBlack
+# define DEFAUT_LIGHT	(sfVector3f) {-300, 600, 200}
 # define X_TRANSLATE_X	(to_rotate.x)
 # define Y_TRANSLATE_X	((to_rotate.y * cosf(XA)) + (to_rotate.z * -sinf(XA)))
 # define Z_TRANSLATE_X	((to_rotate.y * sinf(XA)) + (to_rotate.z * cosf(XA)))
@@ -104,7 +106,10 @@ sfVector3f	translate_inv(sfVector3f to_translate,
 /*
 ** window related implements.
 */
-int			open_window(t_my_window *, t_object *, t_env *);
+int			open_window(t_my_window *,
+				    t_object *,
+				    t_env *,
+				    char *);
 sfRenderWindow		*create_window(char *, int, int);
 t_my_framebuffer	*my_framebuffer_create(int, int);
 void			wf_window_destroy(t_my_window *);
