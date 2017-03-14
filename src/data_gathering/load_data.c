@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 14:38:11 2017 Arthur Philippe
-** Last update Thu Mar  9 10:32:42 2017 Arthur Philippe
+** Last update Tue Mar 14 14:13:45 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -58,6 +58,19 @@ int	detect_start_keyword(char *buffer, int *idx)
   return (0);
 }
 
+void	set_objects_ids(t_object *list)
+{
+  int	id;
+
+  id = 0;
+  while (list)
+    {
+      list->id = id;
+      id += 1;
+      list = list->next;
+    }
+}
+
 t_object	*get_objects_from_file(char *file_name)
 {
   t_object	*objects;
@@ -77,5 +90,6 @@ t_object	*get_objects_from_file(char *file_name)
     }
   check_list_content(objects, file_name);
   free(buffer);
+  set_objects_ids(objects);
   return (objects);
 }

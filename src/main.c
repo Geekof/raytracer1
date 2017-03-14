@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Tue Mar 14 09:41:12 2017 Arthur Philippe
+** Last update Tue Mar 14 16:56:00 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -49,7 +49,7 @@ int	raytracer_launcher(char *file_name)
   if (!list)
     return (84);
   env.eye = (sfVector3f) {-400, 0, 0};
-  env.light = (sfVector3f) {200, 2, 200};
+  env.light = (sfVector3f) {-300, 600, 200};
   env.list = list;
   open_window(&w, list, &env);
   while (window_loop(&w));

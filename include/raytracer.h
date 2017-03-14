@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Mon Mar 13 13:34:23 2017 Arthur Philippe
+** Last update Tue Mar 14 14:07:52 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -57,6 +57,7 @@ typedef struct		s_my_window
 
 typedef struct		s_object
 {
+  int			id;
   int			type;
   float			size_a;
   float			size_b;

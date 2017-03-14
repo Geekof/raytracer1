@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Mar  8 20:17:05 2017 Arthur Philippe
-** Last update Tue Mar 14 09:40:28 2017 Arthur Philippe
+** Last update Tue Mar 14 16:54:34 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -35,25 +35,28 @@ void	lower_color(sfColor *color)
     }
 }
 
-static inline int	is_obj_lighten(t_object *list, t_env *env)
+static inline int	is_obj_lighten(t_object *list, t_env *env, int skip)
 {
   float			k;
 
   k = -1;
   while (list)
     {
-      k = obj_fctn_shunter(list, env);
-      if (k > 0.0001 && k < 1)
-	return (0);
+      if (list->id != skip)
+	{
+	  k = obj_fctn_shunter(list, env);
+	  if (k > 0 && k < 1)
+	    return (0);
+	}
       list = list->next;
     }
   return (1);
 }
 
-void	set_light_and_normal(sfVector3f *light,
-			     sfVector3f *normal,
-			     t_env *env,
-			     t_object *obj)
+sfVector3f	set_light_and_normal(sfVector3f *light,
+				     sfVector3f *normal,
+				     t_env *env,
+				     t_object *obj)
 {
   sfVector3f	intersect_pt;
 
@@ -69,6 +72,7 @@ void	set_light_and_normal(sfVector3f *light,
   else if (obj->type == 4)
     *normal = get_normal_cone(intersect_pt, obj->size_a);
   *normal = rotate_zyx(*normal, obj->rot);
+  return (intersect_pt);
 }
 
 void		color_modifier(t_env *env,
@@ -83,19 +87,19 @@ void		color_modifier(t_env *env,
   int		lighten;
   float		coef;
 
-  light_vector.x = env->light.x - env->last_intersect.x;
-  light_vector.y = env->light.y - env->last_intersect.y;
-  light_vector.z = env->light.z - env->last_intersect.z;
+  light_vector.x = env->light.x - intersect_pt.x;
+  light_vector.y = env->light.y - intersect_pt.y;
+  light_vector.z = env->light.z - intersect_pt.z;
   dir_v_save = env->curr_dir_vector;
   eye_save = env->eye;
   env->curr_dir_vector = light_vector;
   env->eye = intersect_pt;
-  // lighten = is_obj_lighten(env->list, env);
-  set_light_and_normal(&light_vector, &normal, env, obj);
-  if (lighten || 1)
+  intersect_pt = set_light_and_normal(&light_vector, &normal, env, obj);
+  lighten = is_obj_lighten(env->list, env, obj->id);
+  if (lighten)
     {
       coef = get_light_coef(light_vector, normal);
-      coef += (coef < 0.9) ? 0.1 : (coef > 0.9 && coef < 1) ? 1 - coef : 0;
+      coef += (coef < 0.9) ? 0.1 : (coef >= 0.9 && coef < 1) ? 1 - coef : 0;
       color->a *= coef;
     }
   else if (!lighten)
