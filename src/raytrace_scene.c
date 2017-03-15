@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 22 18:45:40 2017 Arthur Philippe
-** Last update Tue Mar 14 17:37:36 2017 Arthur Philippe
+** Last update Wed Mar 15 20:29:15 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -65,15 +65,25 @@ void		raytrace_scene(t_my_framebuffer *buffer,
 {
   sfVector2i	sc_pos;
   sfColor	hit_color;
+  int		total;
 
+  total = 0;
   sc_pos = (sfVector2i) {0, 0};
+  acp_print("%s[", MSG_RENDER);
   while (sc_pos.y < buffer->height)
     {
+      if (total >= env->screen_size.x * env->screen_size.y / 10)
+	{
+	  acp_print("%c", LOAD_CHAR);
+	  total = 0;
+	}
       env->curr_dir_vector = calc_dir_vector(buffer->width, env->screen_size,
 					     sc_pos);
       if (raytrace(list, env, &hit_color) >= 0)
 	my_put_pixel(buffer, sc_pos.x, sc_pos.y, hit_color);
       sc_pos.y = (sc_pos.x < buffer->width) ? sc_pos.y : sc_pos.y + 1;
       sc_pos.x = (sc_pos.x < buffer->width) ? sc_pos.x + 1 : 0;
+      total += 1;
     }
+  acp_print("\r[%s", MSG_RENDER_DONE);
 }

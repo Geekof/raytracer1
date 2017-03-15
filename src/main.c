@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Wed Mar 15 10:17:17 2017 Arthur Philippe
+** Last update Wed Mar 15 20:26:59 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -17,7 +17,7 @@
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
 
-int	window_loop(t_my_window *);
+int	window_loop(t_my_window *, t_env *, char *);
 int	raytracer_launcher();
 void	find_light(t_object *list, t_env* env);
 
@@ -44,22 +44,37 @@ int	raytracer_launcher(char *file_name)
 {
   t_my_window	w;
   t_env		env;
-  t_object	*list;
 
-  list = get_objects_from_file(file_name);
-  if (!list)
+  env.list = get_objects_from_file(file_name);
+  if (!env.list)
     return (84);
   env.eye = (sfVector3f) {-400, 0, 0};
-  find_light(list, &env);
-  env.list = list;
-  open_window(&w, list, &env, file_name);
-  while (window_loop(&w));
-  destroy_objects(list);
+  env.eye_rot = (sfVector3f) {0, 0, 0};
+  find_light(env.list, &env);
+  open_window(&w, env.list, &env, file_name);
+  while (window_loop(&w, &env, file_name));
+  destroy_objects(env.list);
   window_destroy(&w);
   return (0);
 }
 
-int	window_loop(t_my_window *w)
+int	resfresh_window(t_my_window *w, t_env *env, char *file_name)
+{
+  destroy_objects(env->list);
+  acp_print(MSG_RELOAD);
+  env->list = get_objects_from_file(file_name);
+  if (!env->list)
+    return (0);
+  find_light(env->list, env);
+  raytrace_scene(w->buffer, env->list, env);
+  sfTexture_updateFromPixels(w->tex, w->buffer->pixels, SC_W, SC_H, 0, 0);
+  sfRenderWindow_clear(w->window, sfBlack);
+  sfRenderWindow_drawSprite(w->window, w->sprite, NULL);
+  sfRenderWindow_display(w->window);
+  return (1);
+}
+
+int	window_loop(t_my_window *w, t_env *env, char *file_name)
 {
   sfEvent	event;
 
@@ -71,6 +86,8 @@ int	window_loop(t_my_window *w)
 	  sfRenderWindow_close(w->window);
 	  return (0);
 	}
+      if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace)
+	return (resfresh_window(w, env, file_name));
     }
   return (1);
 }

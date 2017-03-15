@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:35:59 2017 Arthur Philippe
-** Last update Wed Mar 15 10:25:47 2017 Arthur Philippe
+** Last update Wed Mar 15 20:10:51 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -14,6 +14,8 @@
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Texture.h>
 #include "raytracer.h"
+#include "raytracer_messages.h"
+#include "acp.h"
 
 int		open_window(t_my_window *w,
 			    t_object *list,
@@ -26,19 +28,21 @@ int		open_window(t_my_window *w,
   my_strcat(window_name, PROGRAM_NAME);
   if (!w && !env)
     return (1);
+  w->buffer = my_framebuffer_create(SC_W, SC_H);
+  env->screen_size = (sfVector2i) {w->buffer->width, w->buffer->height};
+  raytrace_scene(w->buffer, list, env);
+  acp_print(MSG_WIN_OPEN);
   w->window = create_window(window_name, SC_W, SC_H);
   w->sprite = sfSprite_create();
   w->tex = sfTexture_create(SC_W, SC_H);
-  w->buffer = my_framebuffer_create(SC_W, SC_H);
   if (!w->buffer || !w->window)
     return (1);
-  env->screen_size = (sfVector2i) {w->buffer->width, w->buffer->height};
-  raytrace_scene(w->buffer, list, env);
   sfTexture_updateFromPixels(w->tex, w->buffer->pixels, SC_W, SC_H, 0, 0);
   sfSprite_setTexture(w->sprite, w->tex, sfTrue);
   sfRenderWindow_clear(w->window, sfBlack);
   sfRenderWindow_drawSprite(w->window, w->sprite, NULL);
   sfRenderWindow_display(w->window);
+  acp_print(MSG_SUCCES);
   return (0);
 }
 

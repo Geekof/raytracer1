@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Wed Mar 15 10:31:17 2017 Arthur Philippe
+** Last update Wed Mar 15 10:42:16 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -72,6 +72,7 @@ typedef struct		s_env
 {
   t_object		*list;
   sfVector3f		eye;
+  sfVector3f		eye_rot;
   sfVector3f		light;
   sfVector3f		curr_dir_vector;
   sfVector3f		last_intersect;
