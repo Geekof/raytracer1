@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Feb 20 12:30:23 2017 Arthur Philippe
-** Last update Tue Mar 14 17:45:37 2017 Arthur Philippe
+** Last update Wed Mar 15 09:56:59 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -48,7 +48,6 @@ void		find_light(t_object *list, t_env* env)
       if (list->type == 5)
 	{
 	  env->light = list->pos;
-	  env->light.y;
 	  return ;
 	}
       list = list->next;

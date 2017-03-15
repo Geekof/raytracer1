@@ -5,11 +5,41 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:27:32 2017 Arthur Philippe
-** Last update Sat Feb 18 14:35:36 2017 Arthur Philippe
+** Last update Wed Mar 15 10:27:36 2017 Arthur Philippe
 */
 
 #include <unistd.h>
 #include "acp.h"
+
+char	*my_strcpy(char *dest, char *src)
+{
+  if (!src || !dest)
+    return (NULL);
+  while (*src)
+    {
+      *dest = *src;
+      src += 1;
+      dest += 1;
+    }
+  *dest = 0;
+  return (dest);
+}
+
+char	*my_strcat(char *dest, char *src)
+{
+  if (!src || !dest)
+    return (0);
+  while (*dest)
+    dest += 1;
+  while (*src)
+    {
+      *dest = *src;
+      src += 1;
+      dest += 1;
+  }
+  *dest = 0;
+  return (dest);
+}
 
 int	acp_putstr(int fd, char *str)
 {

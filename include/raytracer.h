@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Tue Mar 14 17:51:16 2017 Arthur Philippe
+** Last update Wed Mar 15 10:31:17 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -17,7 +17,7 @@
 # define BUFFER_SIZE	10000
 # define SC_W		1280
 # define SC_H		720
-# define WINDOW_NAME	"Raytracer"
+# define PROGRAM_NAME	" -- Raytracer"
 # define FILE_NAME	"objects.tracr"
 # define OBJ_START	"OBJECT*"
 # define OBJ_END	"END_OBJECT*"
@@ -146,4 +146,7 @@ void	destroy_objects(t_object *);
 int		acp_putstr(int fd, char *str);
 void		*my_memset(void *str, int c, int size);
 int		my_getnbr(char *);
+char		*my_strcpy(char *dest, char *src);
+char		*my_strcat(char *dest, char *src);
+
 #endif /* !RAYTRACER_H_ */

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:35:59 2017 Arthur Philippe
-** Last update Tue Mar 14 17:50:52 2017 Arthur Philippe
+** Last update Wed Mar 15 10:25:47 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -20,9 +20,13 @@ int		open_window(t_my_window *w,
 			    t_env *env,
 			    char *file_name)
 {
+  char		window_name[256];
+
+  my_strcpy(window_name, file_name);
+  my_strcat(window_name, PROGRAM_NAME);
   if (!w && !env)
     return (1);
-  w->window = create_window(file_name, SC_W, SC_H);
+  w->window = create_window(window_name, SC_W, SC_H);
   w->sprite = sfSprite_create();
   w->tex = sfTexture_create(SC_W, SC_H);
   w->buffer = my_framebuffer_create(SC_W, SC_H);
