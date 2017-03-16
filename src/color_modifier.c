@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Mar  8 20:17:05 2017 Arthur Philippe
-** Last update Thu Mar 16 08:51:18 2017 Arthur Philippe
+** Last update Thu Mar 16 08:55:41 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -98,7 +98,7 @@ float		color_modifier(t_env *env,
   if (lighten)
     coef = get_light_coef(light_vector, normal);
   else
-    coef = 0.05;
+    coef = 0;
   env->curr_dir_vector = dir_v_save;
   env->eye = eye_save;
   return (coef);
