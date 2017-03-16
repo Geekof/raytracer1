@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Wed Mar 15 10:42:16 2017 Arthur Philippe
+** Last update Thu Mar 16 08:50:13 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -26,6 +26,13 @@
 # define OBJ_CYLINDER	"CYLINDER*"
 # define OBJ_CONE	"CONE*"
 # define OBJ_LIGHT	"LIGHT*"
+# define OBJ_EYE	"EYE*"
+# define ID_SPHERE	1
+# define ID_PLANE	2
+# define ID_CYLINDER	3
+# define ID_CONE	4
+# define ID_LIGHT	5
+# define ID_EYE		6
 # define PI		3.14159265359
 # define XA		angles.x
 # define YA		angles.y
@@ -126,10 +133,9 @@ void			raytrace_scene(t_my_framebuffer *buffer,
 				       t_env *env);
 float			obj_fctn_shunter(t_object *object,
 					 t_env *env);
-void	color_modifier(t_env *env,
-		       t_object *obj,
-		       sfVector3f intersect_pt,
-		       sfColor *color);
+float			color_modifier(t_env *env,
+				       t_object *obj,
+				       sfVector3f intersect_pt);
 /*
 ** Math
 */

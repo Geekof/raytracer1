@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Feb 18 11:24:50 2017 Arthur Philippe
-** Last update Tue Mar 14 17:26:05 2017 Arthur Philippe
+** Last update Wed Mar 15 21:29:55 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -19,30 +19,34 @@
 int	resolve_object_type(char *str)
 {
   if (match(str, OBJ_SPHERE))
-    return (1);
+    return (ID_SPHERE);
   else if (match(str, OBJ_PLANE))
-    return (2);
+    return (ID_PLANE);
   else if (match(str, OBJ_CYLINDER))
-    return (3);
+    return (ID_CYLINDER);
   else if (match(str, OBJ_CONE))
-    return (4);
+    return (ID_CONE);
   else if (match(str, OBJ_LIGHT))
-    return (5);
+    return (ID_LIGHT);
+  else if (match(str, OBJ_EYE))
+    return (ID_EYE);
   return (0);
 }
 
 char	*get_object_type(int type)
 {
-  if (type == 1)
+  if (type == ID_SPHERE)
     return (TYPE_SPHERE);
-  else if (type == 2)
+  else if (type == ID_PLANE)
     return (TYPE_PLANE);
-  else if (type == 3)
+  else if (type == ID_CYLINDER)
     return (TYPE_CYLINDER);
-  else if (type == 4)
+  else if (type == ID_CONE)
     return (TYPE_CONE);
-  else if (type == 5)
+  else if (type == ID_LIGHT)
     return (TYPE_LIGHT);
+  else if (type == ID_EYE)
+    return (TYPE_EYE);
   return (TYPE_UNK);
 }
 

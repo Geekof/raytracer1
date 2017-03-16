@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 22 18:45:40 2017 Arthur Philippe
-** Last update Wed Mar 15 20:29:15 2017 Arthur Philippe
+** Last update Thu Mar 16 08:50:18 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -39,10 +39,10 @@ inline static int	raytrace(t_object *list, t_env *env, sfColor *color)
 {
   float			last_k;
   float			k;
-  sfColor		new_color;
+  float			coef;
 
   last_k = k = -1;
-  *color = new_color = DEFAULT_COLOR;
+  *color = DEFAULT_COLOR;
   while (list)
     {
       k = obj_fctn_shunter(list, env);
@@ -52,7 +52,9 @@ inline static int	raytrace(t_object *list, t_env *env, sfColor *color)
 	  last_k = k;
           env->last_intersect = get_intersection(env->eye,
 						 env->curr_dir_vector, k);
-	  color_modifier(env, list, env->last_intersect, color);
+	  coef = color_modifier(env, list, env->last_intersect);
+	  coef += (coef < 0.9) ? 0.1 : 1 - coef;
+	  color->a *= coef;
 	}
       list = list->next;
     }
@@ -79,6 +81,7 @@ void		raytrace_scene(t_my_framebuffer *buffer,
 	}
       env->curr_dir_vector = calc_dir_vector(buffer->width, env->screen_size,
 					     sc_pos);
+      env->curr_dir_vector = rotate_xyz(env->curr_dir_vector, env->eye_rot);
       if (raytrace(list, env, &hit_color) >= 0)
 	my_put_pixel(buffer, sc_pos.x, sc_pos.y, hit_color);
       sc_pos.y = (sc_pos.x < buffer->width) ? sc_pos.y : sc_pos.y + 1;

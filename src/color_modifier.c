@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Mar  8 20:17:05 2017 Arthur Philippe
-** Last update Tue Mar 14 16:54:34 2017 Arthur Philippe
+** Last update Thu Mar 16 08:51:18 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -75,10 +75,9 @@ sfVector3f	set_light_and_normal(sfVector3f *light,
   return (intersect_pt);
 }
 
-void		color_modifier(t_env *env,
+float		color_modifier(t_env *env,
 			       t_object *obj,
-			       sfVector3f intersect_pt,
-			       sfColor *color)
+			       sfVector3f intersect_pt)
 {
   sfVector3f	light_vector;
   sfVector3f	dir_v_save;
@@ -97,13 +96,10 @@ void		color_modifier(t_env *env,
   intersect_pt = set_light_and_normal(&light_vector, &normal, env, obj);
   lighten = is_obj_lighten(env->list, env, obj->id);
   if (lighten)
-    {
-      coef = get_light_coef(light_vector, normal);
-      coef += (coef < 0.9) ? 0.1 : (coef >= 0.9 && coef < 1) ? 1 - coef : 0;
-      color->a *= coef;
-    }
-  else if (!lighten)
-    color->a *= 0.1;
+    coef = get_light_coef(light_vector, normal);
+  else
+    coef = 0.05;
   env->curr_dir_vector = dir_v_save;
   env->eye = eye_save;
+  return (coef);
 }

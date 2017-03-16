@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Fri Mar  3 15:52:08 2017 Arthur Philippe
-** Last update Tue Mar 14 09:20:51 2017 Arthur Philippe
+** Last update Wed Mar 15 21:41:50 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -37,6 +37,7 @@ float		intersect_cone(sfVector3f eye_pos, sfVector3f dir_vector,
   float		discriminant;
   float		sol;
 
+  radius = radius * (3.14159265359 / 180);
   abc = define_quadric_eq_vars(eye_pos, dir_vector, radius);
   discriminant = powf(abc.y, 2) - (4 * abc.x * abc.z);
   sol = solve_quadric_eq(discriminant, abc.x, abc.y);

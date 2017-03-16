@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Feb 20 12:30:23 2017 Arthur Philippe
-** Last update Wed Mar 15 09:56:59 2017 Arthur Philippe
+** Last update Wed Mar 15 21:31:15 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -41,11 +41,26 @@ t_object	*create_list_node()
   return (obj);
 }
 
-void		find_light(t_object *list, t_env* env)
+void	find_eye(t_object *list, t_env *env)
 {
   while (list)
     {
-      if (list->type == 5)
+      if (list->type == ID_EYE)
+	{
+	  env->eye = list->pos;
+	  env->eye_rot = list->rot;
+	  return ;
+	}
+      list = list->next;
+    }
+  env->light = DEFAUT_LIGHT;
+}
+
+void	find_light(t_object *list, t_env *env)
+{
+  while (list)
+    {
+      if (list->type == ID_LIGHT)
 	{
 	  env->light = list->pos;
 	  return ;

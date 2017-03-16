@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Wed Mar 15 20:26:59 2017 Arthur Philippe
+** Last update Thu Mar 16 08:42:17 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -20,6 +20,7 @@
 int	window_loop(t_my_window *, t_env *, char *);
 int	raytracer_launcher();
 void	find_light(t_object *list, t_env* env);
+void	find_eye(t_object *list, t_env* env);
 
 int	main(int ac, char **av)
 {
@@ -48,8 +49,7 @@ int	raytracer_launcher(char *file_name)
   env.list = get_objects_from_file(file_name);
   if (!env.list)
     return (84);
-  env.eye = (sfVector3f) {-400, 0, 0};
-  env.eye_rot = (sfVector3f) {0, 0, 0};
+  find_eye(env.list, &env);
   find_light(env.list, &env);
   open_window(&w, env.list, &env, file_name);
   while (window_loop(&w, &env, file_name));
@@ -66,6 +66,7 @@ int	resfresh_window(t_my_window *w, t_env *env, char *file_name)
   if (!env->list)
     return (0);
   find_light(env->list, env);
+  find_eye(env->list, env);
   raytrace_scene(w->buffer, env->list, env);
   sfTexture_updateFromPixels(w->tex, w->buffer->pixels, SC_W, SC_H, 0, 0);
   sfRenderWindow_clear(w->window, sfBlack);
