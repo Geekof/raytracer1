@@ -5,13 +5,11 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Mon Dec 19 13:48:42 2016 Arthur Philippe
-** Last update Sat Feb 18 14:11:38 2017 Arthur Philippe
+** Last update Sat Mar 18 11:22:07 2017 Arthur Philippe
 */
 
 #include <unistd.h>
 #include "raytracer_messages.h"
-
-int	acp_putstr(int, char *);
 
 void	*fd_errors(int e, char *f_name)
 {

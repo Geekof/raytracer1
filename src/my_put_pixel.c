@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb  9 09:00:56 2017 Arthur Philippe
-** Last update Thu Feb  9 10:53:49 2017 Arthur Philippe
+** Last update Sat Mar 18 10:14:00 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -13,7 +13,10 @@
 #include <SFML/Graphics/Texture.h>
 #include "raytracer.h"
 
-void	my_put_pixel(t_my_framebuffer *framebuffer, int x, int y, sfColor color)
+void	my_put_pixel(t_my_framebuffer *framebuffer,
+		     int x,
+		     int y,
+		     sfColor color)
 {
   if (x < 0 || y < 0)
     return ;

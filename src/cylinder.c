@@ -5,15 +5,14 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Fri Feb 24 15:24:47 2017 Arthur Philippe
-** Last update Fri Mar 10 19:17:33 2017 Arthur Philippe
+** Last update Sat Mar 18 11:14:10 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Texture.h>
 #include <math.h>
-
-float	solve_quadric_eq(float discriminant, float a, float b);
+#include "intersect.h"
 
 static inline sfVector3f	define_quadric_eq_vars(sfVector3f eye_pos,
 						       sfVector3f dir_vector,

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Thu Mar 16 08:42:17 2017 Arthur Philippe
+** Last update Sat Mar 18 11:19:46 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -16,11 +16,7 @@
 #include "raytracer.h"
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
-
-int	window_loop(t_my_window *, t_env *, char *);
-int	raytracer_launcher();
-void	find_light(t_object *list, t_env* env);
-void	find_eye(t_object *list, t_env* env);
+#include "launch.h"
 
 int	main(int ac, char **av)
 {

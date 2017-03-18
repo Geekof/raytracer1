@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Thu Mar 16 08:50:13 2017 Arthur Philippe
+** Last update Sat Mar 18 10:22:40 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -110,6 +110,10 @@ float		get_light_coef(sfVector3f light_vector,
 			       sfVector3f normal_vector);
 sfVector3f	translate_inv(sfVector3f to_translate,
 			      sfVector3f translations);
+sfVector3f	get_intersection(sfVector3f eye_pos,
+				 sfVector3f dir_vector,
+				 float k);
+
 
 /*
 ** window related implements.

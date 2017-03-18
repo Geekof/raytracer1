@@ -5,15 +5,14 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Fri Mar  3 15:52:08 2017 Arthur Philippe
-** Last update Fri Mar 17 10:53:29 2017 Arthur Philippe
+** Last update Sat Mar 18 11:23:22 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Texture.h>
 #include <math.h>
-
-float	solve_quadric_eq(float discriminant, float a, float b);
+#include "intersect.h"
 
 static inline sfVector3f	define_quadric_eq_vars(sfVector3f eye_pos,
 						       sfVector3f dir_vector,
@@ -30,21 +29,23 @@ static inline sfVector3f	define_quadric_eq_vars(sfVector3f eye_pos,
   return (abc);
 }
 
-float		intersect_cone(sfVector3f eye_pos, sfVector3f dir_vector,
-				 float radius)
+float		intersect_cone(sfVector3f eye_pos,
+			       sfVector3f dir_vector,
+			       float radius)
 {
   sfVector3f	abc;
   float		discriminant;
   float		sol;
 
-  radius = radius * (3.14159265359 / 180);
+  radius = radius * (M_PI / 180);
   abc = define_quadric_eq_vars(eye_pos, dir_vector, radius);
   discriminant = powf(abc.y, 2) - (4 * abc.x * abc.z);
   sol = solve_quadric_eq(discriminant, abc.x, abc.y);
   return (sol);
 }
 
-sfVector3f	get_normal_cone(sfVector3f intersection_point, float semiangle)
+sfVector3f	get_normal_cone(sfVector3f intersection_point,
+				float semiangle)
 {
   semiangle = semiangle * (M_PI / 180);
   intersection_point.z *= -semiangle;

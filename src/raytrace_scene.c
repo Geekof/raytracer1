@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 22 18:45:40 2017 Arthur Philippe
-** Last update Thu Mar 16 08:50:18 2017 Arthur Philippe
+** Last update Sat Mar 18 10:23:00 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -16,10 +16,6 @@
 #include "raytracer.h"
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
-
-sfVector3f	get_intersection(sfVector3f eye_pos,
-				 sfVector3f dir_vector,
-				 float k);
 
 inline static sfColor	get_def_color(t_object *obj)
 {
@@ -35,7 +31,9 @@ inline static sfColor	get_def_color(t_object *obj)
     return (sfBlack);
 }
 
-inline static int	raytrace(t_object *list, t_env *env, sfColor *color)
+inline static int	raytrace(t_object *list,
+				 t_env *env,
+				 sfColor *color)
 {
   float			last_k;
   float			k;

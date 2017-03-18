@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Feb 20 12:30:23 2017 Arthur Philippe
-** Last update Wed Mar 15 21:31:15 2017 Arthur Philippe
+** Last update Sat Mar 18 10:15:55 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -17,7 +17,8 @@
 #include "raytracer_data.h"
 #include "raytracer_messages.h"
 
-t_object	*add_to_object_list(t_object *new_object, t_object *objects)
+t_object	*add_to_object_list(t_object *new_object,
+				    t_object *objects)
 {
   t_object	*current_obj;
 
@@ -70,7 +71,8 @@ void	find_light(t_object *list, t_env *env)
   env->light = DEFAUT_LIGHT;
 }
 
-int		check_list_content(t_object *list, char *file_name)
+int		check_list_content(t_object *list,
+				   char *file_name)
 {
   int		i;
   int		err;

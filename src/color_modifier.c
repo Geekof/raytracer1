@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Mar  8 20:17:05 2017 Arthur Philippe
-** Last update Thu Mar 16 08:55:41 2017 Arthur Philippe
+** Last update Sat Mar 18 10:13:34 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -35,7 +35,9 @@ void	lower_color(sfColor *color)
     }
 }
 
-static inline int	is_obj_lighten(t_object *list, t_env *env, int skip)
+static inline int	is_obj_lighten(t_object *list,
+				       t_env *env,
+				       int skip)
 {
   float			k;
 

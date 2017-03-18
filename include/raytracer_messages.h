@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:35:31 2017 Arthur Philippe
-** Last update Wed Mar 15 21:20:35 2017 Arthur Philippe
+** Last update Sat Mar 18 11:22:04 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_MESSAGES_H_
@@ -47,5 +47,7 @@
 # define TYPE_LIGHT		"light"
 # define TYPE_EYE		"camera"
 # define TYPE_UNK		"beautiful princess or a rune of hyrule"
+
+int	acp_putstr(int, char *);
 
 #endif /* !RAYTRACER_MESSAGES_H_ */
