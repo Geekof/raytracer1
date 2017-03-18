@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Mar  7 12:15:12 2017 Arthur Philippe
-** Last update Tue Mar 14 09:42:25 2017 Arthur Philippe
+** Last update Fri Mar 17 09:58:19 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -20,17 +20,6 @@ static inline float	get_norm(sfVector3f in)
 
   norm = sqrtf((in.x * in.x) + (in.y * in.y) + (in.z * in.z));
   return (norm);
-}
-
-static inline void	normalize_vectors(sfVector3f *st, sfVector3f *nd,
-					  float	st_norm, float nd_norm)
-{
-  st->x = st->x / st_norm;
-  st->y = st->y / st_norm;
-  st->z = st->z / st_norm;
-  nd->x = nd->x / nd_norm;
-  nd->y = nd->y / nd_norm;
-  nd->z = nd->z / nd_norm;
 }
 
 float	get_light_coef(sfVector3f light_vector, sfVector3f normal_vector)
@@ -54,17 +43,4 @@ float	get_light_coef(sfVector3f light_vector, sfVector3f normal_vector)
   if (result > 1)
     return (1);
   return (result);
-}
-
-float	get_light_coef_bis(sfVector3f light_vector, sfVector3f normal_vector)
-{
-  float	cos_a;
-
-  cos_a = normal_vector.x * light_vector.x;
-  cos_a += normal_vector.y * light_vector.y;
-  cos_a += normal_vector.z * light_vector.z;
-  if (cos_a < 0)
-    return (0);
-  else
-    return (cos_a);
 }
