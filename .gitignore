@@ -1,2 +1,4 @@
 *.o
-#src/main.c
+raytracer1
+*.rtc
+notes
