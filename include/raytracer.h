@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Sat Mar 18 10:22:40 2017 Arthur Philippe
+** Last update Sun Mar 19 14:40:36 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -39,15 +39,15 @@
 # define ZA		angles.z
 # define DEFAULT_COLOR	sfBlack
 # define DEFAUT_LIGHT	(sfVector3f) {-300, 600, 200}
-# define X_TRANSLATE_X	(to_rotate.x)
-# define Y_TRANSLATE_X	((to_rotate.y * cosf(XA)) + (to_rotate.z * -sinf(XA)))
-# define Z_TRANSLATE_X	((to_rotate.y * sinf(XA)) + (to_rotate.z * cosf(XA)))
-# define X_TRANSLATE_Y	((to_rotate.x * cosf(YA)) + (to_rotate.z * sinf(YA)))
-# define Y_TRANSLATE_Y	((to_rotate.y))
-# define Z_TRANSLATE_Y	((to_rotate.x * -sinf(YA)) + (to_rotate.z * cosf(YA)))
-# define X_TRANSLATE_Z	((to_rotate.x * cosf(ZA)) + (to_rotate.y * -sinf(ZA)))
-# define Y_TRANSLATE_Z	((to_rotate.x * sinf(ZA)) + (to_rotate.y * cosf(ZA)))
-# define Z_TRANSLATE_Z	(to_rotate.z)
+# define X_TR_X	(to_rotate.x)
+# define Y_TR_X	((to_rotate.y * cosf(XA)) + (to_rotate.z * -sinf(XA)))
+# define Z_TR_X	((to_rotate.y * sinf(XA)) + (to_rotate.z * cosf(XA)))
+# define X_TR_Y	((to_rotate.x * cosf(YA)) + (to_rotate.z * sinf(YA)))
+# define Y_TR_Y	((to_rotate.y))
+# define Z_TR_Y	((to_rotate.x * -sinf(YA)) + (to_rotate.z * cosf(YA)))
+# define X_TR_Z	((to_rotate.x * cosf(ZA)) + (to_rotate.y * -sinf(ZA)))
+# define Y_TR_Z	((to_rotate.x * sinf(ZA)) + (to_rotate.y * cosf(ZA)))
+# define Z_TR_Z	(to_rotate.z)
 
 typedef struct		s_my_framebuffer
 {
@@ -104,7 +104,8 @@ sfVector3f	rotate_xyz(sfVector3f to_rotate, sfVector3f angles);
 sfVector3f	rotate_zyx(sfVector3f to_rotate, sfVector3f angles);
 sfVector3f	get_normal_sphere(sfVector3f intersection_point);
 sfVector3f	get_normal_cylinder(sfVector3f intersection_point);
-sfVector3f	get_normal_cone(sfVector3f intersection_point, float semiangle);
+sfVector3f	get_normal_cone(sfVector3f intersection_point,
+				float semiangle);
 sfVector3f	get_normal_plane(int);
 float		get_light_coef(sfVector3f light_vector,
 			       sfVector3f normal_vector);
@@ -113,8 +114,6 @@ sfVector3f	translate_inv(sfVector3f to_translate,
 sfVector3f	get_intersection(sfVector3f eye_pos,
 				 sfVector3f dir_vector,
 				 float k);
-
-
 /*
 ** window related implements.
 */
@@ -153,11 +152,10 @@ float		solve_quadric_eq(float discriminant, float a, float b);
 */
 void	window_destroy(t_my_window *);
 void	destroy_objects(t_object *);
-
-int		acp_putstr(int fd, char *str);
-void		*my_memset(void *str, int c, int size);
-int		my_getnbr(char *);
-char		*my_strcpy(char *dest, char *src);
-char		*my_strcat(char *dest, char *src);
+int	acp_putstr(int fd, char *str);
+void	*my_memset(void *str, int c, int size);
+int	my_getnbr(char *);
+char	*my_strcpy(char *dest, char *src);
+char	*my_strcat(char *dest, char *src);
 
 #endif /* !RAYTRACER_H_ */
