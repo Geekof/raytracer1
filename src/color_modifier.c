@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Mar  8 20:17:05 2017 Arthur Philippe
-** Last update Sat Mar 18 10:13:34 2017 Arthur Philippe
+** Last update Sun Mar 19 22:14:42 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -17,22 +17,12 @@ sfVector3f	get_intersection(sfVector3f eye_pos,
 				 sfVector3f dir_vector,
 				 float k)
 {
-  sfVector3f		out;
+  sfVector3f	out;
 
   out.x = dir_vector.x * k + eye_pos.x;
   out.y = dir_vector.y * k + eye_pos.y;
   out.z = dir_vector.z * k + eye_pos.z;
   return (out);
-}
-
-void	lower_color(sfColor *color)
-{
-  while (color->r > 50 || color->g > 50 || color->b > 50)
-    {
-      color->r -= (color->r) ? 1 : 0;
-      color->g -= (color->g) ? 1 : 0;
-      color->b -= (color->b) ? 1 : 0;
-    }
 }
 
 static inline int	is_obj_lighten(t_object *list,

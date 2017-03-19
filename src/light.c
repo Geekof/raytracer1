@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Mar  7 12:15:12 2017 Arthur Philippe
-** Last update Sun Mar 19 21:51:34 2017 Arthur Philippe
+** Last update Sun Mar 19 22:13:38 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -22,7 +22,8 @@ static inline float	get_norm(sfVector3f in)
   return (norm);
 }
 
-float	get_light_coef(sfVector3f light_vector, sfVector3f normal_vector)
+float	get_light_coef(sfVector3f light_vector,
+		       sfVector3f normal_vector)
 {
   float	dot;
   float	l_norm;
