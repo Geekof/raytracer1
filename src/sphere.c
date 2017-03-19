@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 15:35:04 2017 Arthur Philippe
-** Last update Sat Mar 18 11:10:05 2017 Arthur Philippe
+** Last update Sun Mar 19 21:50:36 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -14,9 +14,9 @@
 #include <math.h>
 #include "intersect.h"
 
-static inline sfVector3f	define_quadric_eq_vars(sfVector3f eye_pos,
-						       sfVector3f dir_vector,
-						       float radius)
+static inline sfVector3f	define_quad_eq_vars(sfVector3f eye_pos,
+						    sfVector3f dir_vector,
+						    float radius)
 {
   sfVector3f		abc;
 
@@ -38,7 +38,7 @@ float		intersect_sphere(sfVector3f eye_pos, sfVector3f dir_vector,
   float		discriminant;
   float		sol;
 
-  abc = define_quadric_eq_vars(eye_pos, dir_vector, radius);
+  abc = define_quad_eq_vars(eye_pos, dir_vector, radius);
   discriminant = powf(abc.y, 2) - (4 * abc.x * abc.z);
   sol = solve_quadric_eq(discriminant, abc.x, abc.y);
   return (sol);

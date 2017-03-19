@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 22 18:45:40 2017 Arthur Philippe
-** Last update Sat Mar 18 10:23:00 2017 Arthur Philippe
+** Last update Sun Mar 19 22:05:28 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -49,14 +49,25 @@ inline static int	raytrace(t_object *list,
 	  *color = get_def_color(list);
 	  last_k = k;
           env->last_intersect = get_intersection(env->eye,
-						 env->curr_dir_vector, k);
+						 env->curr_dir_vector,
+						 k);
 	  coef = color_modifier(env, list, env->last_intersect);
 	  coef += (coef < 0.9) ? 0.1 : 1 - coef;
 	  color->a *= coef;
 	}
       list = list->next;
     }
-  return ((k >= 0) ? k : 0);
+  k = (k >= 0) ? k : 0;
+  return (k);
+}
+
+void	set_dir_v(float dist, t_env *env, sfVector2i screen_pos)
+{
+  env->curr_dir_vector = calc_dir_vector(dist,
+					 env->screen_size,
+					 screen_pos);
+  env->curr_dir_vector = rotate_xyz(env->curr_dir_vector,
+				    env->eye_rot);
 }
 
 void		raytrace_scene(t_my_framebuffer *buffer,
@@ -77,9 +88,7 @@ void		raytrace_scene(t_my_framebuffer *buffer,
 	  acp_print("%c", LOAD_CHAR);
 	  total = 0;
 	}
-      env->curr_dir_vector = calc_dir_vector(buffer->width, env->screen_size,
-					     sc_pos);
-      env->curr_dir_vector = rotate_xyz(env->curr_dir_vector, env->eye_rot);
+      set_dir_v(buffer->width, env, sc_pos);
       if (raytrace(list, env, &hit_color) >= 0)
 	my_put_pixel(buffer, sc_pos.x, sc_pos.y, hit_color);
       sc_pos.y = (sc_pos.x < buffer->width) ? sc_pos.y : sc_pos.y + 1;
