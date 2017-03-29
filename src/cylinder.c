@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Fri Feb 24 15:24:47 2017 Arthur Philippe
-** Last update Sun Mar 19 21:50:51 2017 Arthur Philippe
+** Last update Sun Mar 26 20:02:06 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -18,7 +18,7 @@ static inline sfVector3f	define_quad_eq_vars(sfVector3f eye_pos,
 						    sfVector3f dir_vector,
 						    float radius)
 {
-  sfVector3f		abc;
+  sfVector3f			abc;
 
   abc.x = powf(dir_vector.x, 2) + powf(dir_vector.y, 2);
   abc.y = (eye_pos.x * dir_vector.x) + (eye_pos.y * dir_vector.y);
@@ -28,9 +28,9 @@ static inline sfVector3f	define_quad_eq_vars(sfVector3f eye_pos,
   return (abc);
 }
 
-float	intersect_cylinder(sfVector3f eye_pos,
-			   sfVector3f dir_vector,
-			   float radius)
+float		intersect_cylinder(sfVector3f eye_pos,
+				   sfVector3f dir_vector,
+				   float radius)
 {
   sfVector3f	abc;
   float		discriminant;
